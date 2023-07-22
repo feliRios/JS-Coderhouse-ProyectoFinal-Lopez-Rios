@@ -1,0 +1,42 @@
+[
+  {
+    "nombre": "Procesador AMD RYZEN 3 3200G",
+    "precio": 84350,
+    "imag": "https://i.imgur.com/vtrQzid.jpeg"
+  },
+  {
+    "nombre": "Procesador AMD RYZEN 5 3600",
+    "precio": 122050,
+    "imag": "https://i.imgur.com/oeoDKk9.jpeg"
+  },
+  {
+    "nombre": "Procesador Intel Core i7 10700",
+    "precio": 248950,
+    "imag": "https://i.imgur.com/C5kPwJx.jpeg"
+  },
+  {
+    "nombre": "Placa de Video RTX 3050 8GB",
+    "precio": 256450,
+    "imag": "https://i.imgur.com/AyTtBCA.jpeg"
+  },
+  {
+    "nombre": "Placa de Video RTX 3090 24GB",
+    "precio": 696150,
+    "imag": "https://i.imgur.com/2DczytG.jpeg"
+  },
+  {
+    "nombre": "Placa de Video RX 6700 XT 12GB",
+    "precio": 303050,
+    "imag": "https://i.imgur.com/3y5pVVM.jpeg"
+  },
+  {
+    "nombre": "Memoria Corsair DDR4 16GB 2400Mhz",
+    "precio": 45100,
+    "imag": "https://i.imgur.com/nrxMfz7.jpeg"
+  },
+  {
+    "nombre": "Disco SSD Kingston 240GB A400",
+    "precio": 16750,
+    "imag": "https://i.imgur.com/JUhZejM.jpeg"
+  }
+]
