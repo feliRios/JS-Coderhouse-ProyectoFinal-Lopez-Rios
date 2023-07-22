@@ -18,51 +18,68 @@
 
 const options = document.querySelector(".options");
 
+// fetch para obtener los items localmente
+fetch("./products.json")
+  .then((req) => {
+    if (req.ok) {
+      return req.json();
+    } else {
+      throw new Error("Hubo un error al traer los datos: " + req.status);
+    }
+  })
+  .then((todos) => {
+    console.log(todos);
+    todos.forEach((element) => {
+      const newContent = document.createElement("div");
+      newContent.innerHTML = `
+                                <h3>${element.nombre}</h3>
+                                <p>Precio: ARS $ ${element.precio}</p>
+                                <img src="${element.imag}">
+                                <button class="add-cart-button" id="add-cart-${element.id}">AÑADIR AL CARRITO</button>
+                             `;
+      options.appendChild(newContent);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
 if (!JSON.parse(sessionStorage.getItem("carrito"))) {
   let carrito = [];
   sessionStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
-class Item {
-  // Clase Item del carrito. Se aplicaron operadores ternarios para evitar nulls y NaNs
-  constructor(name, price, quantity) {
-    this.name = name || "";
-    this.price = price || 0;
-    this.quantity = quantity || 0;
-  }
-}
-
 // Menu principal
-options.innerHTML = `
-                        <ul>
-                            <li>
-                                <button class="option-button" id="add-item">Agregar un producto</button>
-                            </li>
-                            <li>
-                                <button class="option-button" id="show-cart">Mostrar carrito</button>
-                            </li>
+// options.innerHTML = `
+//                         <ul>
+//                             <li>
+//                                 <button class="option-button" id="add-item">Agregar un producto</button>
+//                             </li>
+//                             <li>
+//                                 <button class="option-button" id="show-cart">Mostrar carrito</button>
+//                             </li>
 
-                            <li>
-                                <button class="option-button" id="modify-item">Modificar un item</button>
-                            </li>
-                            <li>
-                                <button class="empty-shopping-cart option-button" id="empty-cart">VACIAR CARRITO</button>
-                            </li>
-                        </ul>
-                    `;
+//                             <li>
+//                                 <button class="option-button" id="modify-item">Modificar un item</button>
+//                             </li>
+//                             <li>
+//                                 <button class="empty-shopping-cart option-button" id="empty-cart">VACIAR CARRITO</button>
+//                             </li>
+//                         </ul>
+//                     `;
 
-// Resolucion agregar item:
-let addItem = document.getElementById("add-item");
-addItem.addEventListener("click", agregarItemCarrito);
+// // Resolucion agregar item:
+// let addItem = document.getElementById("add-item");
 
-// Resolucion mostrar carrito:
-let showCart = document.getElementById("show-cart");
-showCart.addEventListener("click", mostrarCarrito);
+// addItem.addEventListener("click", agregarItemCarrito);
+// // Resolucion mostrar carrito:
+// let showCart = document.getElementById("show-cart");
+// showCart.addEventListener("click", mostrarCarrito);
 
-// Resolucion vaciar carrito:
-let emptyCart = document.getElementById("empty-cart");
-emptyCart.addEventListener("click", vaciarCarrito);
+// // Resolucion vaciar carrito:
+// let emptyCart = document.getElementById("empty-cart");
+// emptyCart.addEventListener("click", vaciarCarrito);
 
-// Resolucion modificar item:
-let modifyItem = document.getElementById("modify-item");
-modifyItem.addEventListener("click", modificarItem);
+// // Resolucion modificar item:
+// let modifyItem = document.getElementById("modify-item");
+// modifyItem.addEventListener("click", modificarItem);

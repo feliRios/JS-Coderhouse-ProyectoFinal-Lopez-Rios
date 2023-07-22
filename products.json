@@ -2,41 +2,49 @@
   {
     "nombre": "Procesador AMD RYZEN 3 3200G",
     "precio": 84350,
-    "imag": "https://i.imgur.com/vtrQzid.jpeg"
+    "imag": "https://compragamer.net/pga/imagenes_publicadas/compragamer_Imganen_general_16752_Procesador_AMD_RYZEN_3_3200G_4.0GHz_Turbo___Radeon_Vega_8_AM4_Wraith_Stealth_Cooler_f414a507-grn.jpg",
+    "id": 0
   },
   {
     "nombre": "Procesador AMD RYZEN 5 3600",
     "precio": 122050,
-    "imag": "https://i.imgur.com/oeoDKk9.jpeg"
+    "imag": "https://compragamer.net/pga/imagenes_publicadas/compragamer_Imganen_general_16749_Procesador_AMD_RYZEN_5_3600_4.2GHz_Turbo_AM4_Wraith_Stealth_Cooler_f8ab4915-grn.jpg",
+    "id": 1
   },
   {
     "nombre": "Procesador Intel Core i7 10700",
     "precio": 248950,
-    "imag": "https://i.imgur.com/C5kPwJx.jpeg"
+    "imag": "https://compragamer.net/pga/imagenes_publicadas/compragamer_Imganen_general_19228_Procesador_Intel_Core_i7_10700_4.8GHz_Turbo_Socket_1200_Comet_Lake_e3d7d847-grn.jpg",
+    "id": 2
   },
   {
     "nombre": "Placa de Video RTX 3050 8GB",
     "precio": 256450,
-    "imag": "https://i.imgur.com/AyTtBCA.jpeg"
+    "imag": "https://compragamer.net/pga/imagenes_publicadas/compragamer_Imganen_general_37026_Placa_de_Video_PNY_XLR8_GeForce_RTX_3050_8GB_GDDR6_Dual_Fan_a6196ba5-grn.jpg",
+    "id": 3
   },
   {
     "nombre": "Placa de Video RTX 3090 24GB",
     "precio": 696150,
-    "imag": "https://i.imgur.com/2DczytG.jpeg"
+    "imag": "https://compragamer.net/pga/imagenes_publicadas/compragamer_Imganen_general_36638_Placa_de_Video_Zotac_GeForce_RTX_3090_24GB_GDDR6X_Trinity_ecb55987-grn.jpg",
+    "id": 4
   },
   {
     "nombre": "Placa de Video RX 6700 XT 12GB",
     "precio": 303050,
-    "imag": "https://i.imgur.com/3y5pVVM.jpeg"
+    "imag": "https://compragamer.net/pga/imagenes_publicadas/compragamer_Imganen_general_26448_Placa_de_Video_XFX_Radeon_RX_6700_XT_CORE_12GB_GDDR6_SWFT_309_c500b0a6-grn.jpg",
+    "id": 5
   },
   {
     "nombre": "Memoria Corsair DDR4 16GB 2400Mhz",
     "precio": 45100,
-    "imag": "https://i.imgur.com/nrxMfz7.jpeg"
+    "imag": "https://compragamer.net/pga/imagenes_publicadas/compragamer_Imganen_general_4617_Memoria_Corsair_DDR4_16GB_2400Mhz_Vengeance_LPX_92446689-grn.jpg",
+    "id": 6
   },
   {
     "nombre": "Disco SSD Kingston 240GB A400",
     "precio": 16750,
-    "imag": "https://i.imgur.com/JUhZejM.jpeg"
+    "imag": "https://compragamer.net/pga/imagenes_publicadas/compragamer_Imganen_general_9269_Disco_S__lido_SSD_Kingston_240GB_A400_500MB_s_c9de3151-grn.jpg",
+    "id": 7
   }
 ]
