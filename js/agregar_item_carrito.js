@@ -12,13 +12,13 @@ function agregarItemCarrito(element, todos) {
 
   // Logica: si se añade al carrito un producto que ya existe en el mismo, se
   // aumenta su cantidad una unidad.
-  if ((carrito.filter(e => { return e.name == productToAdd[0].nombre } )).length){
+  if ((carrito.filter(e => { return e.id == productToAdd[0].id } )).length){
     console.log("Si existe");
-    let productToModify = carrito.filter(e => { return e.name == productToAdd[0].nombre } );
+    let productToModify = carrito.filter(e => { return e.id == productToAdd[0].id } );
     productToModify[0].quantity++;
   } else {
     console.log("No existe");
-    carrito.push(new Item(productToAdd[0].nombre, productToAdd[0].precio, 1));
+    carrito.push(new Item(productToAdd[0].nombre, productToAdd[0].precio, 1, productToAdd[0].id));
   }
 
   sessionStorage.setItem("carrito", JSON.stringify(carrito));
@@ -29,7 +29,7 @@ function agregarItemCarrito(element, todos) {
     newWindow: true,
     close: true,
     gravity: "top",
-    position: "right",
+    position: "left",
     stopOnFocus: true,
     style: {
       background: "linear-gradient(to right, #00b09b, #96c93d)",

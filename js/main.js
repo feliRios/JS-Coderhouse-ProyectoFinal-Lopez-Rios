@@ -18,10 +18,11 @@
 
 class Item {
   // Clase Item del carrito. Se aplicaron operadores ternarios para evitar nulls y NaNs
-  constructor(name, price, quantity) {
+  constructor(name, price, quantity, id) {
       this.name = name || '';
       this.price = price || 0;
       this.quantity = quantity || 0;
+      this.id = id || 0;
   }
 }
 
@@ -57,7 +58,7 @@ fetch("./products.json")
     for (const element of addButton) {
       console.log(element);
       element.addEventListener('click', () => {
-        
+
         agregarItemCarrito(element, todos);
 
       })
@@ -67,7 +68,33 @@ fetch("./products.json")
     console.log(err);
   });
 
+function showItems(){
+  let showMenu = document.querySelector('.menu');
+  let carrito = JSON.parse(sessionStorage.getItem("carrito"));
+  if (carrito.length){
+    carrito.forEach(e => {
+      const newContent = document.createElement('div');
+      newContent.innerHTML = `
+                                <p>PRODUCTO: ${e.name}</p>
+                                <p>PRECIO: ${e.price}</p>
+                                <p>CANTIDAD: ${e.quantity}</p>
+                                <button class="delete-cart-button" id="delete-cart-${e.id}">Eliminar</button>
+                             `
+      showMenu.appendChild(newContent);
+    });
 
+    let deleteButton = document.getElementsByClassName("delete-cart-button");
+    for (const element of deleteButton) {
+      element.addEventListener("click", () => {
+
+        deleteItem(element);
+        
+      });
+    }
+  }
+}
+
+showItems()
 
 
 
