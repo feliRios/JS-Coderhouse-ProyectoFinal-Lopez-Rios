@@ -16,6 +16,20 @@
 // si el carrito existe (es decir, ya se ejecuto el programa), se prosigue con el programa.
 // Si el carrito no existe (es decir, primera ejecucion), entonces se crea un carrito vacio
 
+class Item {
+  // Clase Item del carrito. Se aplicaron operadores ternarios para evitar nulls y NaNs
+  constructor(name, price, quantity) {
+      this.name = name || '';
+      this.price = price || 0;
+      this.quantity = quantity || 0;
+  }
+}
+
+if (!JSON.parse(sessionStorage.getItem("carrito"))) {
+  let carrito = [];
+  sessionStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
 const options = document.querySelector(".options");
 
 // fetch para obtener los items localmente
@@ -39,15 +53,23 @@ fetch("./products.json")
                              `;
       options.appendChild(newContent);
     });
+    let addButton = document.getElementsByClassName('add-cart-button');
+    for (const element of addButton) {
+      console.log(element);
+      element.addEventListener('click', () => {
+        
+        agregarItemCarrito(element, todos);
+
+      })
+    }
   })
   .catch((err) => {
     console.log(err);
   });
 
-if (!JSON.parse(sessionStorage.getItem("carrito"))) {
-  let carrito = [];
-  sessionStorage.setItem("carrito", JSON.stringify(carrito));
-}
+
+
+
 
 // Menu principal
 // options.innerHTML = `

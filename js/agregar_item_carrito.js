@@ -1,46 +1,38 @@
-function agregarItemCarrito() {
+function agregarItemCarrito(element, todos) {
   // Esta funcion agrega un Item al carrito
-  options.innerHTML = `
-                            <form id="product-send-form" action="">
-                                <input id="product-name" type="text" placeholder="Nombre del producto" required>
-                                <input id="product-value" type="number" placeholder="Precio del producto" required>
-                                <input id="product-quantity" type="number" placeholder="Cantidad de unidades de producto" required>
-                                <input type="submit">
-                            </form>
-                        `;
+  // Me traigo el carrito del storage
+  let carrito = JSON.parse(sessionStorage.getItem('carrito'));
 
-  let enviarForm = document.getElementById("product-send-form");
-  enviarForm.addEventListener("submit", (e) => {
-    // Escuchador de evento para cargar el item en el carrito
-    e.preventDefault();
-    let nombreProducto = document.getElementById("product-name").value;
-    let valorProducto = document.getElementById("product-value").value;
-    let cantidadProducto = document.getElementById("product-quantity").value;
+  // Selecciono el atributo ID del nodo. Posteriormente, selecciono el ultimo
+  // caracter (que posee el ID del elemento en el JSON)
+  let productId = element.id.slice(-1)
+  let productToAdd = todos.filter(e => { return e.id == productId });
+  console.log(productToAdd);
+  console.log(carrito);
 
-    if (nombreProducto && valorProducto && cantidadProducto) {
-      const producto = new Item(
-        nombreProducto,
-        valorProducto,
-        cantidadProducto
-      );
+  // Logica: si se añade al carrito un producto que ya existe en el mismo, se
+  // aumenta su cantidad una unidad.
+  if ((carrito.filter(e => { return e.name == productToAdd[0].nombre } )).length){
+    console.log("Si existe");
+    let productToModify = carrito.filter(e => { return e.name == productToAdd[0].nombre } );
+    productToModify[0].quantity++;
+  } else {
+    console.log("No existe");
+    carrito.push(new Item(productToAdd[0].nombre, productToAdd[0].precio, 1));
+  }
 
-      const carritoJSON = sessionStorage.getItem("carrito");
-      carrito = JSON.parse(carritoJSON);
-      carrito.push(producto);
-      sessionStorage.setItem("carrito", JSON.stringify(carrito));
-      options.innerHTML = `
-                                <form action="">
-                                    <p>Producto agregado correctamente.</p>
-                                    <input type="submit" value="VOLVER">
-                                </form>
-                            `;
-    } else {
-      options.innerHTML = `
-                                <form action="">
-                                    <p>Debes completar todos los campos.</p>
-                                    <input type="submit" value="VOLVER">
-                                </form>
-                                `;
+  sessionStorage.setItem("carrito", JSON.stringify(carrito));
+
+  Toastify({
+    text: "Producto agregado correctamente",
+    duration: 3000,
+    newWindow: true,
+    close: true,
+    gravity: "top",
+    position: "right",
+    stopOnFocus: true,
+    style: {
+      background: "linear-gradient(to right, #00b09b, #96c93d)",
     }
-  });
+  }).showToast();
 }
