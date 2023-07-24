@@ -128,3 +128,8 @@ body {
 .decrease-button:hover, .increase-button:hover {
     opacity: 0.8;
 }
+
+.decrease-unavaliable {
+    background-color: rgba(1, 1, 164, 0.243);
+    cursor: default;
+}
