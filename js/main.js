@@ -101,38 +101,7 @@ function showItems(){
       let increaseButtons = document.getElementsByClassName('increase-button');
       let decreaseButtons = document.getElementsByClassName('decrease-button');
 
-      for (const incButton of increaseButtons) {
-        incButton.addEventListener('click', () => {
-          if (incButton.id.slice(-1) == e.id){
-            e.quantity++;
-          }
-          sessionStorage.setItem("carrito", JSON.stringify(carrito));
-        });
-      }
-
-      // La siguiente logica establece que si la cantidad del producto es mayor a 1,
-      // entonces la cantidad se puede decrementar. Caso contrario, el boton de decremento
-      // pasara a no estar disponible (mediante la adicion de una 
-      // nueva clase 'decrease-unavaliable')
-
-      if (e.quantity > 1){
-        for (const decButton of decreaseButtons) {
-          decButton.addEventListener('click', () => {
-            if (decButton.id.slice(-1) == e.id){
-              e.quantity--;
-            }
-            sessionStorage.setItem("carrito", JSON.stringify(carrito));
-          });
-        }
-      } else {
-        for (const decButton of decreaseButtons) {
-          if (decButton.id.slice(-1) == e.id){
-            decButton.classList.add('decrease-unavaliable');
-            decButton.disabled = true;
-            decButton.style.opacity = 0.7;
-          }
-        }
-      }
+      modifyItem(e, increaseButtons, decreaseButtons);
 
     });
 
