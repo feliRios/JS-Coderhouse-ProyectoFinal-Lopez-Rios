@@ -79,6 +79,12 @@ function showItems(){
   if (carrito.length){
     carrito.forEach(e => {
       const newContent = document.createElement('li');
+      const increaseDecreaseButton = document.createElement('div');
+      increaseDecreaseButton.classList.add('incDec-button-container');
+      increaseDecreaseButton.innerHTML = `
+                                          <button class="increase-button" id="increase-button-${e.id}">+</button>
+                                          <button class="decrease-button" id="decrease-button-${e.id}">-</button>
+                                         `
       newContent.innerHTML = `
                                 <div>
                                   <p>PRODUCTO: ${e.name}</p>
@@ -87,7 +93,32 @@ function showItems(){
                                   <button class="delete-cart-button" id="delete-cart-${e.id}">Eliminar</button>
                                 </div>
                              `
+      newContent.appendChild(increaseDecreaseButton);
       showItems.appendChild(newContent);
+
+      // Aca iria la logica de modificar la cantidad de un item
+
+      let increaseButtons = document.getElementsByClassName('increase-button');
+      let decreaseButtons = document.getElementsByClassName('decrease-button');
+
+      for (const incButton of increaseButtons) {
+        incButton.addEventListener('click', () => {
+          if (incButton.id.slice(-1) == e.id){
+            e.quantity++;
+          }
+          sessionStorage.setItem("carrito", JSON.stringify(carrito));
+        });
+      }
+
+      for (const decButton of decreaseButtons) {
+        decButton.addEventListener('click', () => {
+          if (decButton.id.slice(-1) == e.id){
+            e.quantity--;
+          }
+          sessionStorage.setItem("carrito", JSON.stringify(carrito));
+        });
+      }
+
     });
 
     // Aca estaria la logica de eliminar un item con su respectivo boton
@@ -100,6 +131,10 @@ function showItems(){
         
       });
     }
+
+    // Aca estaria la logica de aumentar o disminuir la cantidad de un item
+
+
 
     // Aca estaria la logica de los botones de vaciar carrito, ver el total y
     // calcular las cuotas con interes

@@ -100,3 +100,31 @@ body {
 .menu-open {
     transform: translateX(0);
 }
+
+.incDec-button-container {
+    display: flex;
+    margin-top: 5px;
+}
+
+.increase-button, .decrease-button {
+    width: 25px;
+    height: 25px;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.increase-button {
+    background-color: rgb(0, 169, 0);
+    color: white;
+}
+
+.decrease-button {
+    background-color: rgb(1, 1, 164);
+    color: white;
+}
+
+.decrease-button:hover, .increase-button:hover {
+    opacity: 0.8;
+}
