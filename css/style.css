@@ -67,6 +67,8 @@ body {
 
 .menu {
     padding: 20px;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 .menu ul {
