@@ -116,34 +116,29 @@ function showItems(){
 
     let emptyCartButton = document.querySelector('.empty-cart-button');
     emptyCartButton.addEventListener('click', () => {
+
       emptyCart();
+
     });
 
-    function emptyCart(){
-      
-      Swal.fire({
-        title: '¿Estás seguro que deseas vaciar el carrito?',
-        text: "¡No vas a poder revertir esta acción!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Si, vaciar carrito',
-        cancelButtonText: 'Cancelar'
-      }).then((res) => {
-        if (res.isConfirmed) {
-          carrito = [];
-          sessionStorage.setItem('carrito', JSON.stringify(carrito));
-          Swal.fire({
-            title: 'Carrito vaciado',
-            text: 'Eliminaste todos los productos del carrito',
-            icon: 'success',
-            confirmButtonColor: '#3085d6'
-          })
-        }
-      })
-    };
+    // Logica y funcion de calcular cuotas
+    
+    let interestCalcButton = document.querySelector('.interest-calc');
+    interestCalcButton.addEventListener('click', () => {
 
+      installmentsCalc();
+
+    });
+
+
+    let cartTotal = carrito.reduce((acu, e) => { return acu += (e.price * e.quantity) }, 0);
+
+    const cartPrice = document.createElement('div');
+    cartPrice.classList.add('cart-total');
+    cartPrice.innerHTML = `
+                            <p>Total: ARS <strong>$ ${cartTotal}</strong></p>
+                          `
+    showMenu.appendChild(cartPrice);
 
   } else {
     showMenu.innerHTML = `
@@ -153,40 +148,3 @@ function showItems(){
 }
 
 showItems();
-
-
-
-// Menu principal
-// options.innerHTML = `
-//                         <ul>
-//                             <li>
-//                                 <button class="option-button" id="add-item">Agregar un producto</button>
-//                             </li>
-//                             <li>
-//                                 <button class="option-button" id="show-cart">Mostrar carrito</button>
-//                             </li>
-
-//                             <li>
-//                                 <button class="option-button" id="modify-item">Modificar un item</button>
-//                             </li>
-//                             <li>
-//                                 <button class="empty-shopping-cart option-button" id="empty-cart">VACIAR CARRITO</button>
-//                             </li>
-//                         </ul>
-//                     `;
-
-// // Resolucion agregar item:
-// let addItem = document.getElementById("add-item");
-
-// addItem.addEventListener("click", agregarItemCarrito);
-// // Resolucion mostrar carrito:
-// let showCart = document.getElementById("show-cart");
-// showCart.addEventListener("click", mostrarCarrito);
-
-// // Resolucion vaciar carrito:
-// let emptyCart = document.getElementById("empty-cart");
-// emptyCart.addEventListener("click", vaciarCarrito);
-
-// // Resolucion modificar item:
-// let modifyItem = document.getElementById("modify-item");
-// modifyItem.addEventListener("click", modificarItem);
