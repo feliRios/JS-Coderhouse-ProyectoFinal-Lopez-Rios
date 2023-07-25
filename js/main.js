@@ -12,9 +12,6 @@
 //   para el simulador.
 // - Utilizar asincronía y fetch para cargar datos estáticos o consumir una API.
 
-// Inicializacion de un carrito en el session storage:
-// si el carrito existe (es decir, ya se ejecuto el programa), se prosigue con el programa.
-// Si el carrito no existe (es decir, primera ejecucion), entonces se crea un carrito vacio
 
 class Item {
   // Clase Item del carrito. Se aplicaron operadores ternarios para evitar nulls y NaNs
@@ -26,12 +23,19 @@ class Item {
   }
 }
 
+
 if (!JSON.parse(sessionStorage.getItem("carrito"))) {
+  // Inicializacion del carrito en el session storage:
+  // si el carrito existe (es decir, ya se ejecuto el programa), se prosigue con el programa.
+  // Si el carrito no existe (es decir, primera ejecucion), entonces se crea un carrito vacio
   let carrito = [];
   sessionStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
+
+// Se selecciona el nodo que va a contener los productos para comprar
 const options = document.querySelector(".options");
+
 
 // fetch para obtener los items localmente
 fetch("./products.json")
@@ -54,15 +58,20 @@ fetch("./products.json")
                              `;
       options.appendChild(newContent);
     });
+    
     let addButton = document.getElementsByClassName('add-cart-button');
     for (const element of addButton) {
       console.log(element);
       element.addEventListener('click', () => {
 
-        agregarItemCarrito(element, todos);
+        addItemToCart(element, todos)
+          .then((product) => {
+            console.log(product);
+          })
 
       })
     }
+
   })
   .catch((err) => {
     console.log(err);
@@ -101,7 +110,7 @@ function showItems(){
       let increaseButtons = document.getElementsByClassName('increase-button');
       let decreaseButtons = document.getElementsByClassName('decrease-button');
 
-      modifyItem(e, increaseButtons, decreaseButtons);
+      modifyItem(e, increaseButtons, decreaseButtons, carrito);
 
     });
 

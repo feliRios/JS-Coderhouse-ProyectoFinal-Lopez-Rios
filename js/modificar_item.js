@@ -1,4 +1,4 @@
-function modifyItem(product, increaseBtns, decreaseBtns) {
+function modifyItem(product, increaseBtns, decreaseBtns, carrito) {
   for (const incButton of increaseBtns) {
     incButton.addEventListener("click", () => {
       if (incButton.id.slice(-1) == product.id) {
