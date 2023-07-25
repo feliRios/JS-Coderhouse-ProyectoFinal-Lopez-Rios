@@ -55,7 +55,7 @@ function addItemToCart(element, todos) {
 
       }
       
-      resolve(productToAdd);
+      resolve(new Item(productToAdd[0].nombre, productToAdd[0].precio, 1, productToAdd[0].id));
 
     } else {
       // Si NO productToAdd, significa que el producto no existe

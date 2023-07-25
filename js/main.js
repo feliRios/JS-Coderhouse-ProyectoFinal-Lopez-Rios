@@ -66,7 +66,7 @@ fetch("./products.json")
 
         addItemToCart(element, todos)
           .then((product) => {
-            console.log(product);
+            showCart();
           })
 
       })
@@ -77,102 +77,104 @@ fetch("./products.json")
     console.log(err);
   });
 
-function showItems(){
-  // Esta seria la funcion principal. Muestra los items del carrito en el menu
-  // desplegable. Contiene a otras funciones de otras funcionalidades
+window.addEventListener("load", () => {
+  showCart();
+});
 
-  let showItems = document.querySelector('.cart-items');
-  let showMenu = document.querySelector('.menu');
-  let carrito = JSON.parse(sessionStorage.getItem("carrito"));
+// function showItems(){
+//   // Esta seria la funcion principal. Muestra los items del carrito en el menu
+//   // desplegable. Contiene a otras funciones de otras funcionalidades
 
-  if (carrito.length){
-    carrito.forEach(e => {
-      const newContent = document.createElement('li');
-      const increaseDecreaseButton = document.createElement('div');
-      increaseDecreaseButton.classList.add('incDec-button-container');
-      increaseDecreaseButton.innerHTML = `
-                                          <button class="increase-button" id="increase-button-${e.id}">+</button>
-                                          <button class="decrease-button" id="decrease-button-${e.id}">-</button>
-                                         `
-      newContent.innerHTML = `
-                                <div>
-                                  <p>PRODUCTO: ${e.name}</p>
-                                  <p>PRECIO: ${e.price}</p>
-                                  <p>CANTIDAD: ${e.quantity}</p>
-                                  <button class="delete-cart-button" id="delete-cart-${e.id}">Eliminar</button>
-                                </div>
-                             `
-      newContent.appendChild(increaseDecreaseButton);
-      showItems.appendChild(newContent);
+//   let showItems = document.querySelector('.cart-items');
+//   let showMenu = document.querySelector('.menu');
+//   let carrito = JSON.parse(sessionStorage.getItem("carrito"));
 
-      // Aca iria la logica de modificar la cantidad de un item
+//   if (carrito.length){
+//     carrito.forEach(e => {
+//       const newContent = document.createElement('li');
+//       const increaseDecreaseButton = document.createElement('div');
+//       increaseDecreaseButton.classList.add('incDec-button-container');
+//       increaseDecreaseButton.innerHTML = `
+//                                           <button class="increase-button" id="increase-button-${e.id}">+</button>
+//                                           <button class="decrease-button" id="decrease-button-${e.id}">-</button>
+//                                          `
+//       newContent.innerHTML = `
+//                                 <div>
+//                                   <p>PRODUCTO: ${e.name}</p>
+//                                   <p>PRECIO: ${e.price}</p>
+//                                   <p>CANTIDAD: ${e.quantity}</p>
+//                                   <button class="delete-cart-button" id="delete-cart-${e.id}">Eliminar</button>
+//                                 </div>
+//                              `
+//       newContent.appendChild(increaseDecreaseButton);
+//       showItems.appendChild(newContent);
 
-      let increaseButtons = document.getElementsByClassName('increase-button');
-      let decreaseButtons = document.getElementsByClassName('decrease-button');
+//       // Aca iria la logica de modificar la cantidad de un item
 
-      modifyItem(e, increaseButtons, decreaseButtons, carrito);
+//       let increaseButtons = document.getElementsByClassName('increase-button');
+//       let decreaseButtons = document.getElementsByClassName('decrease-button');
 
-    });
+//       modifyItem(e, increaseButtons, decreaseButtons, carrito);
 
-    // Aca estaria la logica de eliminar un item con su respectivo boton
+//     });
 
-    let deleteButton = document.getElementsByClassName("delete-cart-button");
-    for (const element of deleteButton) {
-      element.addEventListener("click", () => {
+//     // Aca estaria la logica de eliminar un item con su respectivo boton
 
-        deleteItem(element);
+//     let deleteButton = document.getElementsByClassName("delete-cart-button");
+//     for (const element of deleteButton) {
+//       element.addEventListener("click", () => {
+
+//         deleteItem(element);
         
-      });
-    }
+//       });
+//     }
 
-    // Aca estaria la logica de aumentar o disminuir la cantidad de un item
+//     // Aca estaria la logica de aumentar o disminuir la cantidad de un item
 
 
 
-    // Aca estaria la logica de los botones de vaciar carrito, ver el total y
-    // calcular las cuotas con interes
+//     // Aca estaria la logica de los botones de vaciar carrito, ver el total y
+//     // calcular las cuotas con interes
 
-    const cartOptions = document.createElement('div');
-    cartOptions.classList.add('cart-options');
-    cartOptions.innerHTML = `
-                              <button class="empty-cart-button">VACIAR CARRITO</button>
-                              <button class="interest-calc">CALCULAR CUOTAS</button>
-                            `
-    showMenu.appendChild(cartOptions);
+//     const cartOptions = document.createElement('div');
+//     cartOptions.classList.add('cart-options');
+//     cartOptions.innerHTML = `
+//                               <button class="empty-cart-button">VACIAR CARRITO</button>
+//                               <button class="interest-calc">CALCULAR CUOTAS</button>
+//                             `
+//     showMenu.appendChild(cartOptions);
 
-    // Logica y funcion de vaciar carrito
+//     // Logica y funcion de vaciar carrito
 
-    let emptyCartButton = document.querySelector('.empty-cart-button');
-    emptyCartButton.addEventListener('click', () => {
+//     let emptyCartButton = document.querySelector('.empty-cart-button');
+//     emptyCartButton.addEventListener('click', () => {
 
-      emptyCart();
+//       emptyCart();
 
-    });
+//     });
 
-    // Logica y funcion de calcular cuotas
+//     // Logica y funcion de calcular cuotas
     
-    let interestCalcButton = document.querySelector('.interest-calc');
-    interestCalcButton.addEventListener('click', () => {
+//     let interestCalcButton = document.querySelector('.interest-calc');
+//     interestCalcButton.addEventListener('click', () => {
 
-      installmentsCalc();
+//       installmentsCalc();
 
-    });
+//     });
 
 
-    let cartTotal = carrito.reduce((acu, e) => { return acu += (e.price * e.quantity) }, 0);
+//     let cartTotal = carrito.reduce((acu, e) => { return acu += (e.price * e.quantity) }, 0);
 
-    const cartPrice = document.createElement('div');
-    cartPrice.classList.add('cart-total');
-    cartPrice.innerHTML = `
-                            <p>Total: ARS <strong>$ ${cartTotal}</strong></p>
-                          `
-    showMenu.appendChild(cartPrice);
+//     const cartPrice = document.createElement('div');
+//     cartPrice.classList.add('cart-total');
+//     cartPrice.innerHTML = `
+//                             <p>Total: ARS <strong>$ ${cartTotal}</strong></p>
+//                           `
+//     showMenu.appendChild(cartPrice);
 
-  } else {
-    showMenu.innerHTML = `
-                          <p>¡Ups! Parece que tu carrito se encuentra vacío...</p>
-                         `
-  }
-}
-
-showItems();
+//   } else {
+//     showMenu.innerHTML = `
+//                           <p>¡Ups! Parece que tu carrito se encuentra vacío...</p>
+//                          `
+//   }
+// }
