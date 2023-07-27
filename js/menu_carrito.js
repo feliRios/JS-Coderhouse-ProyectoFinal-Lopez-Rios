@@ -76,6 +76,7 @@ function showCart() {
     cartOptions.innerHTML = `
                               <button class="empty-cart-button">VACIAR CARRITO</button>
                               <button class="interest-calc">CALCULAR CUOTAS</button>
+                              <button class="buy-cart">FINALIZAR COMPRA</button>
                             `;
     showFunctions.appendChild(cartOptions);
 
@@ -90,6 +91,13 @@ function showCart() {
     const interestCalcButton = document.querySelector(".interest-calc");
     interestCalcButton.addEventListener("click", () => {
       installmentsCalc();
+    });
+
+    // Logica y funcion de comprar carrito y aplicar un descuento
+
+    const purchase = document.querySelector(".buy-cart");
+    purchase.addEventListener("click", () => {
+      buyCart(cartTotal);
     });
 
     const cartPrice = document.createElement("div");

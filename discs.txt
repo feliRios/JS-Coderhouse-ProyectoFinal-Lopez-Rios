@@ -1,0 +1,7 @@
+Aca estan los codigos de descuentos disponibles para utilizar al momento de finalizar la compra (son de uso ilimitados y se encuentran
+en el archivo discounts.json). Con TODOS los codigos se obtiene un 20% de descuento al valor total del carrito: 
+
+- BZ7X-8UYO
+- 89CS-LOPI
+- BUX2-OJ23
+- KOXC-9UNM
