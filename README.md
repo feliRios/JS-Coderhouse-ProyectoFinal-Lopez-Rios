@@ -1,6 +1,6 @@
 Proyecto Final JavaScript: carrito de compras interactivo
 ============
-[![Current Version](https://img.shields.io/badge/version-1.0.0-green.svg)](https://github.com/IgorAntun/node-chat) 
+[![Current Version](https://img.shields.io/badge/version-1.0.0-green.svg)]
 
 Proyecto final del _curso de JavaScript_ de Coderhouse. Primer curso de la _"Carrera Backend"_ \
 Comisión 52245\
@@ -35,18 +35,19 @@ Alumno: Felipe López Ríos
 
 # Sobre este proyecto
 
-Se trata de un carrito de compras interactivo simple, en donde el usuario posee un listado de productos con un precio pre-definido, en donde podrá realizar diversas interacciones con el mismo tales como:
+Se trata de un carrito de compras interactivo simple, en donde el usuario posee un catalogo de productos predefinidos (que se encuentran en una API local), en donde podrá realizar diversas interacciones con el mismo tales como:
 
 - Agregar productos al carrito
 - Eliminar productos del carrito
 - Vaciar el carrito
 - Calcular el total del carrito en el caso de que el usuario desee adquirir los productos en cuotas (con interés)
 - Modificar un producto del carrito (tal como la cantidad del mismo)
+- SIMULAR una compra con diversos códigos promocionales (que se encuentran en otra API local) que ofrecen un descuento sobre el monto total del carrito
 
 ---
 
 ## Objetivos generales
-Este proyecto tiene como objeto final ser complementado en un sitio web de compra-venta (un e-commerce, por ejemplo), ya que su función principal es actuar como un carrito de compras con algunas funcionalidades "extras", teniendo como objetivo facilitar y mejorar la experiencia del usuario a la hora de comprar productos en un sitio web.
+El objetivo de este proyecto es desarrollar una aplicación web que permita al usuario gestionar un carrito de compras interactivo. Tiene como objeto final ser complementado en un sitio web de compra-venta
 
 ---
 
@@ -66,4 +67,6 @@ Las librerias utilizadas son:
 ---
 
 ## URL a video demostrativo
-El siguiente link lleva a un video de YouTube en donde se explica más a detalle la funcionalidad del proyecto y el problema que resuelve: https://www.youtube.com/
+El siguiente link lleva a un video de YouTube en donde se explica más a detalle el proyecto: 
+[PROXIMAMENTE]
+https://www.youtube.com/
