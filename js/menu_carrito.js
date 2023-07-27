@@ -110,6 +110,8 @@ function showCart() {
     showFunctions.innerHTML = `<p>¡Tu carrito se encuentra vacío!</p>`;
   }
 
+  document.querySelector('#item-counter-nmb').textContent = `${carrito.length}`
+
   if (carrito.length != 0) {
     // Condicional que me permite actualizar el total del carrito al momento
     document.querySelector(".cart-total").innerHTML = `
