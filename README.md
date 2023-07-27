@@ -6,7 +6,7 @@ Proyecto final del _curso de JavaScript_ de Coderhouse. Primer curso de la _"Car
 Comisión 52245\
 Alumno: Felipe López Ríos
 
-![Chat Preview](http://i.imgur.com/lgRe8z4.png)
+![Chat Preview](https://i.imgur.com/eg8RxoW.png)
 
 ---
 # Rúbrica del proyecto

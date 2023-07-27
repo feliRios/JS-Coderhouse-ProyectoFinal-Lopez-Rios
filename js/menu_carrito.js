@@ -14,11 +14,12 @@ function showCart() {
   for (const product of carrito) {
     // Bucle FOR que dibuja los items en el carrito
     const newContent = document.createElement("li");
+    newContent.classList.add('cart-product')
     newContent.innerHTML = `
-                              <div>
-                                <p>PRODUCTO: ${product.name}</p>
-                                <p>PRECIO: ${product.price}</p>
-                                <p>CANTIDAD: ${product.quantity}</p>
+                              <div class="cart-product-content">
+                                <p><strong>PRODUCTO:</strong> ${product.name}</p>
+                                <p><strong>PRECIO:</strong> ARS $ ${product.price}</p>
+                                <p><strong>CANTIDAD:</strong> ${product.quantity}</p>
                                 <button class="delete-cart-button" id="delete-cart-${product.id}">Eliminar</button>
                               </div>
                             `;

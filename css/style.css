@@ -2,16 +2,66 @@ body {
     font-family: sans-serif;
 }
 
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
 .empty-shopping-cart {
     color: red;
 }
 
 .content {
     background-color: rgb(255, 115, 1);
-    box-shadow: 15px 15px 15px black ;
-    max-width: 700px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    max-width: 987px;
     margin: 0 auto;
     padding: 20px;
+}
+
+.options {
+    display: grid;
+    gap: 0.8em;
+    grid-template-columns: repeat(auto-fit, minmax(221px, 1fr));
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(199, 90, 0);
+    padding: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: scale(1.03);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.product-card img {
+    max-width: 200px;
+}
+
+.product-card h3 {
+    text-align: center;
+}
+
+.product-card button {
+    color: #000000;
+    border: none;
+    background-color: #c94d00;
+    margin-top: 1em;
+    padding: 1em;
+    border-radius: 10px;
+}
+
+.product-card button:hover {
+    cursor: pointer;
+    background-color: #b74600;
 }
 
 .options ul {
@@ -66,7 +116,7 @@ body {
     top: 0;
     right: 0;
     bottom: 0;
-    width: 400px;
+    width: 30vw;
     background-color: #fff;
     box-shadow: -1px 0px 7px rgba(0, 0, 0, 0.5);
     transform: translateX(100%);
@@ -121,25 +171,27 @@ body {
 
 .incDec-button-container {
     display: flex;
+    gap: 0.3em;
     margin-top: 5px;
 }
 
 .increase-button, .decrease-button {
-    width: 25px;
-    height: 25px;
+    width: 40px;
+    height: 40px;
     font-size: 24px;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    border-radius: 20px;
 }
 
 .increase-button {
-    background-color: rgb(0, 169, 0);
+    background-color: rgb(56, 56, 56);
     color: white;
 }
 
 .decrease-button {
-    background-color: rgb(1, 1, 164);
+    background-color: rgb(56, 56, 56);
     color: white;
 }
 
@@ -150,4 +202,89 @@ body {
 .unavailable-button {
     background-color: rgba(1, 1, 164, 0.243);
     cursor: default;
+}
+
+.cart-product {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 7px;
+    background-color: rgba(0, 0, 0, 0.141);
+}
+
+.delete-cart-button {
+    color: #fff;
+    background-color: #282828;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 85px;
+}
+
+.delete-cart-button:hover {
+    opacity: 0.8;
+}
+
+.cart-functions {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 7px;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.cart-options {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cart-options button {
+    color: #fff;
+    background-color: #282828;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.cart-options button:active {
+    transform: scale(0.95);
+}
+
+.cart-total {
+    align-self: center;
+}
+
+@media (max-width: 279px) {
+    .header-content h1 {
+        font-size: 1rem;
+    }
+
+    .options {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .product-card img {
+        max-width: 140px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .menu-container {
+        width: 40vw;
+    }
+}
+
+@media (max-width: 700px) {
+    .menu-container {
+        width: 50vw;
+    }
+}
+
+@media (max-width: 450px) {
+    .menu-container {
+        width: 60vw;
+    }
 }

@@ -51,6 +51,7 @@ fetch("./products.json")
                                 <img src="${element.imag}">
                                 <button class="add-cart-button" id="add-cart-${element.id}">AÑADIR AL CARRITO</button>
                              `;
+      newContent.classList.add('product-card');
       options.appendChild(newContent);
     });
 
