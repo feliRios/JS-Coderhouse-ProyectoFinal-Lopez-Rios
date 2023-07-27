@@ -44,6 +44,12 @@ Se trata de un carrito de compras interactivo simple, en donde el usuario posee 
 - Modificar un producto del carrito (tal como la cantidad del mismo)
 - SIMULAR una compra con diversos códigos promocionales (que se encuentran en otra API local) que ofrecen un descuento sobre el monto total del carrito
 
+Los codigos promocionales son los siguientes (tambien se encuentran en el archivo discs.txt):
+- BZ7X-8UYO
+- 89CS-LOPI
+- BUX2-OJ23
+- KOXC-9UNM
+
 ---
 
 ## Objetivos generales

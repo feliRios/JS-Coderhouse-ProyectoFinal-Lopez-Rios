@@ -35,7 +35,7 @@ async function buyCart(total) {
       confirmButtonText: 'Enviar',
       showLoaderOnConfirm: true,
       preConfirm: (code) => {
-        return fetch('./discounts.json')
+        return fetch('./json/discounts.json')
           .then(res => {
             if (res.ok) {
               return res.json()

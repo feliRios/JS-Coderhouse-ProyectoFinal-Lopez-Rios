@@ -34,7 +34,7 @@ if (!JSON.parse(sessionStorage.getItem("carrito"))) {
 const options = document.querySelector(".options");
 
 // fetch para obtener los items localmente
-fetch("./products.json")
+fetch("./json/products.json")
   .then((req) => {
     if (req.ok) {
       return req.json();
