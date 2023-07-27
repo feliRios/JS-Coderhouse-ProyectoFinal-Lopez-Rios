@@ -129,7 +129,7 @@ body {
     opacity: 0.8;
 }
 
-.decrease-unavaliable {
+.unavailable-button {
     background-color: rgba(1, 1, 164, 0.243);
     cursor: default;
 }

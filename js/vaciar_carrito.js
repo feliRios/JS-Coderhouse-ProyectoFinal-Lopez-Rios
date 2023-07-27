@@ -19,5 +19,6 @@ function emptyCart() {
         confirmButtonColor: "#3085d6",
       });
     }
+    showCart();
   });
 }

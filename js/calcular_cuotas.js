@@ -5,7 +5,9 @@ async function installmentsCalc() {
   // 12 cuotas -> 20% interes
   // 18 cuotas -> 22% interes
 
-  const carrito = JSON.parse(sessionStorage.getItem('carrito'));
+  const carrito = JSON.parse(sessionStorage.getItem("carrito"));
+
+  // ---- (Codigo extraído de la documentacion de Sweet Alert) ----
 
   const inputOptions = new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -29,11 +31,13 @@ async function installmentsCalc() {
     },
   });
 
+  // ---------------------------------------------------------------
+
   if (cuotas) {
-    let total = carrito.reduce((acu, e) => {
+    const total = carrito.reduce((acu, e) => {
       return (acu += e.price * e.quantity);
     }, 0);
-    let valorCuota = total / parseInt(cuotas);
+    const valorCuota = total / parseInt(cuotas);
     let valorCuotaConInteres, valorTotal;
 
     switch (cuotas) {
@@ -60,8 +64,11 @@ async function installmentsCalc() {
       html: `
               Seleccionaste: ${cuotas} cuotas <br> 
               El total del carrito es: ARS <strong>$ ${valorTotal}</strong> <br>
+              (Un total de ${cuotas} cuotas de ARS $ ${
+        valorTotal / cuotas
+      }) <br>
               Monto total anterior SIN interes: ARS $ <strong>${total}</strong>
-            `
+            `,
     });
   }
 }
