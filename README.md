@@ -1,6 +1,6 @@
 Proyecto Final JavaScript: carrito de compras interactivo
 ============
-[![Current Version](https://img.shields.io/badge/version-1.0.0-green.svg)]
+![Current Version](https://img.shields.io/badge/version-1.0.0-green.svg)
 
 Proyecto final del _curso de JavaScript_ de Coderhouse. Primer curso de la _"Carrera Backend"_ \
 Comisión 52245\
