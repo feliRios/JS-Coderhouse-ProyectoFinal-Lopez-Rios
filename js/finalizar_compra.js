@@ -1,12 +1,16 @@
-async function buyCart(total) {
+async function buyCart() {
+  // Me traigo el carrito del storage
+  let carrito = JSON.parse(sessionStorage.getItem("carrito"));
 
-  // ---- (Codigo extraído de la documentacion de Sweet Alert) ----
+  const total = carrito.reduce((acu, e) => {
+    return (acu += e.price * e.quantity);
+  }, 0);
 
   const inputOptions = new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve({
         1: "Si",
-        0: "No"
+        0: "No",
       });
     }, 500);
   });
@@ -24,25 +28,24 @@ async function buyCart(total) {
   });
 
   if (eleccion == 1) {
-    console.log(eleccion);
     Swal.fire({
-      title: 'Ingrese su codigo promocional',
-      input: 'text',
+      title: "Ingrese su codigo promocional",
+      input: "text",
       inputAttributes: {
-        autocapitalize: 'off'
+        autocapitalize: "off",
       },
       showCancelButton: true,
-      confirmButtonText: 'Enviar',
+      confirmButtonText: "Enviar",
       showLoaderOnConfirm: true,
       preConfirm: (code) => {
-        return fetch('./json/discounts.json')
-          .then(res => {
+        return fetch("./json/discounts.json")
+          .then((res) => {
             if (res.ok) {
-              return res.json()
+              return res.json();
             }
-            throw new Error(res.statusText)
+            throw new Error(res.statusText);
           })
-          .then(todos => {
+          .then((todos) => {
             let codigos = todos[0].codigos;
             if (codigos.includes(code)) {
               return true;
@@ -50,13 +53,11 @@ async function buyCart(total) {
               throw new Error("Código no válido");
             }
           })
-          .catch(err => {
-            Swal.showValidationMessage(
-              `Request failed: ${err}`
-            )
-          })
+          .catch((err) => {
+            Swal.showValidationMessage(`Request failed: ${err}`);
+          });
       },
-      allowOutsideClick: () => !Swal.isLoading()
+      allowOutsideClick: () => !Swal.isLoading(),
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
@@ -67,25 +68,34 @@ async function buyCart(total) {
                   (Precio anterior: ARS $ ${total})
                 `,
           showCancelButton: true,
-          confirmButtonText: 'Finalizar compra',
-          cancelButtonText: 'Cancelar'
-        })
-          .then((res) => {
-            if (res.isConfirmed) {
-              Swal.fire({
-                icon: 'success',
-                title: 'Gracias por su compra',
-                text: `Usted pagó ARS $ ${total * 0.8}`
-              })
-            }
-          })
+          confirmButtonText: "Finalizar compra",
+          cancelButtonText: "Cancelar",
+        }).then((res) => {
+          if (res.isConfirmed) {
+            carrito = [];
+            sessionStorage.setItem('carrito', JSON.stringify(carrito));
+
+            Swal.fire({
+              icon: "success",
+              title: "Gracias por su compra",
+              text: `Usted pagó ARS $ ${total * 0.8}`,
+            });
+
+            showCart();
+          }
+        });
       }
-    })
+    });
   } else {
+    carrito = [];
+    sessionStorage.setItem('carrito', JSON.stringify(carrito));
+
     Swal.fire({
-      icon: 'success',
-      title: 'Gracias por su compra',
-      text: `Usted pagó ARS $ ${total}`
-    })
+      icon: "success",
+      title: "Gracias por su compra",
+      text: `Usted pagó ARS $ ${total}`,
+    });
+
+    showCart();
   }
 }

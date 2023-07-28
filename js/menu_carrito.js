@@ -66,7 +66,8 @@ function showCart() {
     return (acu += e.price * e.quantity);
   }, 0);
 
-  // Logica de los botones de vaciar carrito, ver el total y calcular cuotas con interes
+  // Logica de los botones de vaciar carrito, ver el total, calcular cuotas con interes
+  // y comprar
 
   if (showFunctions.childNodes.length == 1 && carrito.length != 0) {
     // Esta condicional evita que las opciones del carrito se dupliquen e
@@ -99,7 +100,7 @@ function showCart() {
 
     const purchase = document.querySelector(".buy-cart");
     purchase.addEventListener("click", () => {
-      buyCart(cartTotal);
+      buyCart();
     });
 
     const cartPrice = document.createElement("div");

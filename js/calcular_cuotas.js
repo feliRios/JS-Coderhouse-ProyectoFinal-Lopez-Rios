@@ -7,8 +7,6 @@ async function installmentsCalc() {
 
   const carrito = JSON.parse(sessionStorage.getItem("carrito"));
 
-  // ---- (Codigo extraído de la documentacion de Sweet Alert) ----
-
   const inputOptions = new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve({
@@ -30,8 +28,6 @@ async function installmentsCalc() {
       }
     },
   });
-
-  // ---------------------------------------------------------------
 
   if (cuotas) {
     const total = carrito.reduce((acu, e) => {
