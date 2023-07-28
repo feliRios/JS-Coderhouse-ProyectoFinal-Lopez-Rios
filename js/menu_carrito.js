@@ -15,6 +15,7 @@ function showCart() {
     // Bucle FOR que dibuja los items en el carrito
     const newContent = document.createElement("li");
     newContent.classList.add('cart-product')
+    newContent.classList.add(`cart-product-${product.id}`)
     newContent.innerHTML = `
                               <div class="cart-product-content">
                                 <p><strong>PRODUCTO:</strong> ${product.name}</p>
@@ -35,27 +36,27 @@ function showCart() {
     // Logica para incrementar/decrementar la cantidad de productos a traves de
     // sus respectivos botones
 
-    const increase = document.getElementById(`increase-button-${product.id}`);
-    increase.addEventListener("click", () => {
+    const increaseButton = document.getElementById(`increase-button-${product.id}`);
+    increaseButton.addEventListener("click", () => {
       increaseProduct(product.id);
     });
 
-    const decrease = document.getElementById(`decrease-button-${product.id}`);
+    const decreaseButton = document.getElementById(`decrease-button-${product.id}`);
     if (product.quantity > 1) {
       // Condicional que no permite reducir la cantidad de un item si su cantidad es 1
-      decrease.addEventListener("click", () => {
+      decreaseButton.addEventListener("click", () => {
         decreaseProduct(product.id);
       });
     } else {
-      decrease.classList.add("unavailable-button");
-      decrease.disabled = true;
-      decrease.style.opacity = 0.8;
+      decreaseButton.classList.add("unavailable-button");
+      decreaseButton.disabled = true;
+      decreaseButton.style.opacity = 0.8;
     }
 
     // Logica para eliminar un producto del carrito
 
-    const deleteProduct = document.getElementById(`delete-cart-${product.id}`);
-    deleteProduct.addEventListener("click", () => {
+    const deleteProductButton = document.getElementById(`delete-cart-${product.id}`);
+    deleteProductButton.addEventListener("click", () => {
       deleteItem(product);
     });
   }
